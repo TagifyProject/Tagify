@@ -1,0 +1,9 @@
+#thumbnailImage {
+    border-radius: 10px;
+    border: 2px solid #ccc;
+    padding: 10px;
+}
+
+#thumbnailImage:hover {
+    border: 2px solid #f66;
+}
