@@ -5,6 +5,12 @@
 <p align="center">
 <img src="https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff" alt="Python"/>
 <img src="https://img.shields.io/badge/Qt-41CD52?logo=qt&logoColor=white" alt="Qt"/>
+<a href="https://gitmoji.dev">
+  <img
+    src="https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square"
+    alt="Gitmoji"
+  />
+</a>
 </p>
 
 <br />
