@@ -1,1 +1,1 @@
-PyInstaller
+pyinstaller==6.11.1
