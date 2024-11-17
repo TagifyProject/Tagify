@@ -42,6 +42,6 @@ Tagify leverages AI to automatically generate and manage tags for files, making 
 
 ### Socials
 
-<a href="https://mastodon.social/@tagify">
+<a href="https://fosstodon.org/@TagifyProject">
 	<img src="https://img.shields.io/badge/Mastodon-6364FF?logo=mastodon&logoColor=fff"/>
 </a>
