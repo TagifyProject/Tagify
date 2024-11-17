@@ -1,13 +1,14 @@
 from PySide6.QtWidgets import (
     QDialog,
-    QVBoxLayout,
     QHBoxLayout,
-    QPushButton,
     QLabel,
     QListWidget,
     QListWidgetItem,
+    QPushButton,
+    QVBoxLayout,
 )
-from lib.db import Library, File
+
+from lib.db import File, Library
 
 
 class ManageFileTags(QDialog):

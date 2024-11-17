@@ -1,15 +1,9 @@
 # main_window.py
-from PySide6.QtWidgets import (
-    QMainWindow,
-    QMenuBar,
-    QFileDialog,
-    QHBoxLayout,
-    QWidget,
-)
-from PySide6.QtGui import QIcon, QAction
+from PySide6.QtGui import QAction, QIcon
+from PySide6.QtWidgets import QFileDialog, QHBoxLayout, QMainWindow, QMenuBar, QWidget
 
-from widgets.Files import Files
 from widgets.About import About
+from widgets.Files import Files
 from widgets.MenuActions import MenuActions
 
 

@@ -1,12 +1,12 @@
 from PySide6.QtWidgets import (
+    QComboBox,
     QDialog,
-    QLabel,
-    QVBoxLayout,
     QHBoxLayout,
-    QPushButton,
+    QLabel,
     QLineEdit,
     QMessageBox,
-    QComboBox,
+    QPushButton,
+    QVBoxLayout,
 )
 
 from lib.config import config
@@ -53,7 +53,7 @@ class ApiKeyManager(QDialog):
     def save_key(self):
         key = self.api_key_input.text()
 
-        if not key:
+        if not key and self.provider.currentIndex() == 0:
             QMessageBox.critical(self, "Error", "API Key cannot be empty")
 
             return

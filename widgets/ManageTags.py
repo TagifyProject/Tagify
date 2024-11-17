@@ -1,6 +1,7 @@
-from PySide6.QtWidgets import QDialog, QVBoxLayout, QLineEdit, QPushButton, QHBoxLayout
-from widgets.FlowLayout import FlowLayout
+from PySide6.QtWidgets import QDialog, QHBoxLayout, QLineEdit, QPushButton, QVBoxLayout
+
 from lib.db import Library
+from widgets.FlowLayout import FlowLayout
 
 
 class ManageTags(QDialog):

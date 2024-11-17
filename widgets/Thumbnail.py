@@ -1,13 +1,13 @@
-from PySide6.QtWidgets import QLabel, QVBoxLayout, QWidget, QSizePolicy, QMenu
-from PySide6.QtGui import QPixmap, QImage
-from PySide6.QtCore import Qt
+import subprocess
 
-from lib.open_file_default_app import open_file_with_default_app
-from lib.parse_file_extension import parse_file_extension
-from lib.db import File
+from PySide6.QtCore import Qt
+from PySide6.QtGui import QImage, QPixmap
+from PySide6.QtWidgets import QLabel, QMenu, QSizePolicy, QVBoxLayout, QWidget
 
 import lib.db as db
-import subprocess
+from lib.db import File
+from lib.open_file_default_app import open_file_with_default_app
+from lib.parse_file_extension import parse_file_extension
 from widgets.ManageFileTags import ManageFileTags
 
 

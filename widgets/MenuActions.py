@@ -1,21 +1,21 @@
 # widgets/MenuActions.py
-from PySide6.QtWidgets import (
-    QFileDialog,
-    QDialog,
-    QVBoxLayout,
-    QCheckBox,
-    QPushButton,
-    QHBoxLayout,
-)
-from lib.db import File
-import lib.db as db
 import os
 
-from widgets.ManageTags import ManageTags
-from widgets.ApiKeyManager import ApiKeyManager
+from PySide6.QtWidgets import (
+    QCheckBox,
+    QDialog,
+    QFileDialog,
+    QHBoxLayout,
+    QPushButton,
+    QVBoxLayout,
+)
 
-from lib.generate_tags import generate_tags
+import lib.db as db
 from lib.config import config
+from lib.db import File
+from lib.generate_tags import generate_tags
+from widgets.ApiKeyManager import ApiKeyManager
+from widgets.ManageTags import ManageTags
 
 
 class TaggingOptionsDialog(QDialog):

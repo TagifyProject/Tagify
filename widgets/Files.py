@@ -1,17 +1,16 @@
-from PySide6.QtWidgets import (
-    QWidget,
-    QPushButton,
-    QFileDialog,
-    QLineEdit,
-    QVBoxLayout,
-    QHBoxLayout,
-)
 from PySide6.QtGui import QFont
-
-from widgets.Thumbnail import Thumbnail
-from widgets.FlowLayout import FlowLayout
+from PySide6.QtWidgets import (
+    QFileDialog,
+    QHBoxLayout,
+    QLineEdit,
+    QPushButton,
+    QVBoxLayout,
+    QWidget,
+)
 
 import lib.db as db
+from widgets.FlowLayout import FlowLayout
+from widgets.Thumbnail import Thumbnail
 
 
 class Files(QWidget):

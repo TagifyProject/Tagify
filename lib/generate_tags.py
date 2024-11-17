@@ -1,14 +1,15 @@
-from openai import OpenAI
-from PIL import Image
+import base64
+import json
 from io import BytesIO
+
 from docx import Document
 from odf.opendocument import load
 from odf.text import P
-from lib.config import config
+from openai import OpenAI
+from PIL import Image
 
-import base64
-import json
 import lib.db as db
+from lib.config import config
 
 client = OpenAI(
     base_url=(

@@ -1,5 +1,5 @@
-import subprocess
 import os
+import subprocess
 
 
 def open_file_with_default_app(filepath):

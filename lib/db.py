@@ -1,6 +1,7 @@
-import os
-import yaml
 import hashlib
+import os
+
+import yaml
 
 
 class File:
