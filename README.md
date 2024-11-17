@@ -4,8 +4,7 @@
 
 <p align="center">
 <img src="https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff" alt="Python"/>
-<img src="https://img.shields.io/badge/Qt-41CD52?logo=qt&logoColor=white" alt="Qt"/> 
-<img src="https://img.shields.io/badge/ollama-black?logo=ollama&logoColor=white" alt="Ollama"/>
+<img src="https://img.shields.io/badge/Qt-41CD52?logo=qt&logoColor=white" alt="Qt"/>
 </p>
 
 <br />
