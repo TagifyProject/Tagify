@@ -7,7 +7,7 @@
 <img src="https://img.shields.io/badge/Qt-41CD52?logo=qt&logoColor=white" alt="Qt"/>
 <a href="https://gitmoji.dev">
   <img
-    src="https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square"
+    src="https://img.shields.io/badge/gitmoji-%20%F0%9F%98%9C%20%F0%9F%98%8D-FFDD67.svg"
     alt="Gitmoji"
   />
 </a>
