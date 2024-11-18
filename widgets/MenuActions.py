@@ -77,7 +77,11 @@ class MenuActions:
         if db.current_library:
             options_dialog = TaggingOptionsDialog(self.main_window)
 
-            if config.api_key or config.provider == "g4f":
+            if (
+                config.api_key
+                or config.provider == "g4f"
+                or config.provider == "ollama"
+            ):
                 if options_dialog.exec():
                     self.ai_tagging_enabled = options_dialog.is_ai_tagging_enabled()
                     self.main_window.fileDialog.exec()

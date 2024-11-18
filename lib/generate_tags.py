@@ -1,41 +1,73 @@
 import base64
 import json
-from io import BytesIO
+import instructor
 
+from io import BytesIO
 from docx import Document
 from odf.opendocument import load
 from odf.text import P
 from openai import OpenAI
 from PIL import Image
+from pydantic import BaseModel, Field
 
 import lib.db as db
 from lib.config import config
 
-client = OpenAI(
-    base_url=(
-        "https://api.mistral.ai/v1"
-        if config.provider == "mistral"
-        else "http://localhost:1337/v1"
+
+class Response(BaseModel):
+    tags: list[str] = Field(description="List of tags relevant to the document")
+
+
+base_url = ""
+
+if config.provider == "mistral":
+    base_url = "https://api.mistral.ai/v1"
+elif config.provider == "g4f":
+    base_url = "http://localhost:1337/v1"
+elif config.provider == "ollama":
+    base_url = "http://localhost:11434/v1"
+
+client = instructor.from_openai(
+    OpenAI(
+        base_url=base_url,
+        api_key=config.api_key or "key",
     ),
-    api_key=config.api_key,
+    mode=instructor.Mode.JSON,
 )
 
 
 def _generate_tags_text(text: str) -> list:
+    model = ""
+
+    if config.provider == "mistral":
+        model = "open-mistral-nemo"
+    elif config.provider == "g4f":
+        model = "gpt-4o-mini"
+    elif config.provider == "ollama":
+        model = "phi3"
+
     completion = client.chat.completions.create(
-        model="open-mistral-nemo" if config.provider == "mistral" else "gpt-4o-mini",
+        model=model,
         messages=[
             {
                 "role": "system",
                 "content": f"""
                         Respond in JSON. Tag the document.
-                        Here are your available tags: {str(db.current_library.tags)}.
                         Multiple tags are allowed.
                         If none of the tags are relevant, you leave the tags field blank
+
+                        For example:\
+if it is a work document, add a tag relevant to the document
+
+                        DO NOT ADD TAGS THAT ARE NOT RELEVANT.
 
                         I repeat, DO NOT ADD TAGS THAT ARE NOT RELEVANT.
 
                         Don't surround it in backticks.
+
+                        Here are your available tags: {str(db.current_library.tags)}.
+
+                        Don't add tags that are not in your available tags.
 
                         Schema:
                             tags: List[str] | blank array
@@ -43,14 +75,10 @@ def _generate_tags_text(text: str) -> list:
             },
             {"role": "user", "content": text},
         ],
-        response_format={"type": "json_object"},
+        response_model=Response,
     )
 
-    print(completion.choices[0].message.content)
-
-    json_tagged = json.loads(completion.choices[0].message.content)
-
-    return json_tagged["tags"]
+    return completion.tags
 
 
 def generate_tags(filename: str) -> list:
@@ -74,8 +102,15 @@ def generate_tags(filename: str) -> list:
 
         image_b64 = base64.b64encode(bytesio.getvalue()).decode("utf-8")
 
+        if config.provider == "mistral":
+            model = "pixtral-12b-2409"
+        elif config.provider == "g4f":
+            model = "gpt-4o-mini"
+        elif config.provider == "ollama":
+            return []
+
         completion = client.chat.completions.create(
-            model="pixtral-12b-2409" if config.provider == "mistral" else "gpt-4o",
+            model=model,
             messages=[
                 {
                     "role": "system",
@@ -98,7 +133,7 @@ def generate_tags(filename: str) -> list:
                     ],
                 },
             ],
-            response_format={"type": "json_object"},
+            response_model=Response,
         )
 
         print(completion.choices[0].message.content)

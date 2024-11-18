@@ -21,7 +21,7 @@ class ApiKeyManager(QDialog):
         self.layout = QVBoxLayout()
 
         self.provider = QComboBox()
-        self.provider.addItems(["Mistral.AI", "G4F"])
+        self.provider.addItems(["Mistral.AI", "G4F", "ollama"])
         self.provider.currentIndexChanged.connect(self.save_provider)
 
         self.api_key_label = QLabel("API Key:")
@@ -45,8 +45,10 @@ class ApiKeyManager(QDialog):
 
         if provider == 0:
             provider = "mistral"
-        else:
+        elif provider == 1:
             provider = "g4f"
+        elif provider == 2:
+            provider = "ollama"
 
         config.set_provider(provider)
 

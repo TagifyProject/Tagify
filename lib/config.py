@@ -36,11 +36,11 @@ class Config:
         self._save_config()
 
     def set_provider(self, provider: str):
-        if provider in ["mistral", "g4f"]:
+        if provider in ["mistral", "g4f", "ollama"]:
             self.provider = provider
             self._save_config()
         else:
-            raise ValueError("Provider must be either 'mistral' or 'g4f'")
+            raise ValueError("Provider must be either 'mistral', 'g4f' or 'ollama'")
 
     def _save_config(self):
         with open(self.config_path, "w") as f:
